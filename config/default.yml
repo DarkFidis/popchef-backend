@@ -1,0 +1,7 @@
+server:
+  name: popchef-test
+  listen:
+    port: 4000
+  poweredBy: darkfidis
+log:
+  level: debug

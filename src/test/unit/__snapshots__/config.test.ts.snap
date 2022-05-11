@@ -1,0 +1,135 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`config unit tests custom env vars should return custom config given BASE_URL="http://mybaseurl", PORT=3333, LOG_LEVEL="debug", REDIS_HOST="redisHost", REDIS_PORT=6379 1`] = `
+Object {
+  "config": Object {
+    "env": "development",
+    "log": Object {
+      "level": "debug",
+    },
+    "name": "popchef-test",
+    "server": Object {
+      "listen": Object {
+        "port": 4000,
+      },
+      "name": "popchef-test",
+      "poweredBy": "darkfidis",
+    },
+    "version": "0.0.1-fakeversion",
+  },
+}
+`;
+
+exports[`config unit tests custom env vars should return custom config given BASE_URL="http://mybaseurl", PORT=3333, LOG_LEVEL="debug", REDIS_HOST="redisHost", REDIS_PORT=undefined 1`] = `
+Object {
+  "config": Object {
+    "env": "development",
+    "log": Object {
+      "level": "debug",
+    },
+    "name": "popchef-test",
+    "server": Object {
+      "listen": Object {
+        "port": 4000,
+      },
+      "name": "popchef-test",
+      "poweredBy": "darkfidis",
+    },
+    "version": "0.0.1-fakeversion",
+  },
+}
+`;
+
+exports[`config unit tests custom env vars should return custom config given BASE_URL="http://mybaseurl", PORT=3333, LOG_LEVEL="debug", REDIS_HOST=undefined, REDIS_PORT=undefined 1`] = `
+Object {
+  "config": Object {
+    "env": "development",
+    "log": Object {
+      "level": "debug",
+    },
+    "name": "popchef-test",
+    "server": Object {
+      "listen": Object {
+        "port": 4000,
+      },
+      "name": "popchef-test",
+      "poweredBy": "darkfidis",
+    },
+    "version": "0.0.1-fakeversion",
+  },
+}
+`;
+
+exports[`config unit tests custom env vars should return custom config given BASE_URL="http://mybaseurl", PORT=3333, LOG_LEVEL=undefined, REDIS_HOST=undefined, REDIS_PORT=undefined 1`] = `
+Object {
+  "config": Object {
+    "env": "development",
+    "log": Object {
+      "level": "debug",
+    },
+    "name": "popchef-test",
+    "server": Object {
+      "listen": Object {
+        "port": 4000,
+      },
+      "name": "popchef-test",
+      "poweredBy": "darkfidis",
+    },
+    "version": "0.0.1-fakeversion",
+  },
+}
+`;
+
+exports[`config unit tests custom env vars should return custom config given BASE_URL="http://mybaseurl", PORT=undefined, LOG_LEVEL=undefined, REDIS_HOST=undefined, REDIS_PORT=undefined 1`] = `
+Object {
+  "config": Object {
+    "env": "development",
+    "log": Object {
+      "level": "debug",
+    },
+    "name": "popchef-test",
+    "server": Object {
+      "listen": Object {
+        "port": 4000,
+      },
+      "name": "popchef-test",
+      "poweredBy": "darkfidis",
+    },
+    "version": "0.0.1-fakeversion",
+  },
+}
+`;
+
+exports[`config unit tests custom env vars should return custom config given BASE_URL=undefined, PORT=undefined, LOG_LEVEL=undefined, REDIS_HOST=undefined, REDIS_PORT=undefined 1`] = `
+Object {
+  "config": Object {
+    "env": "development",
+    "log": Object {
+      "level": "debug",
+    },
+    "name": "popchef-test",
+    "server": Object {
+      "listen": Object {
+        "port": 4000,
+      },
+      "name": "popchef-test",
+      "poweredBy": "darkfidis",
+    },
+    "version": "0.0.1-fakeversion",
+  },
+}
+`;
+
+exports[`config unit tests hacked config should return config with defaults given no config is provided for log, server 1`] = `
+Object {
+  "env": "development",
+  "log": Object {
+    "level": "info",
+  },
+  "name": "popchef-test",
+  "server": Object {
+    "listen": Object {},
+  },
+  "version": "0.0.1-fakeversion",
+}
+`;
