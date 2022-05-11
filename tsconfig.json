@@ -22,7 +22,7 @@
     "removeComments": true,
     "resolveJsonModule": true,
     "rootDir": ".",
-    "sourceMap": false,
+    "sourceMap": true,
     "strict": true,
     "strictFunctionTypes": true,
     "strictNullChecks": true,
