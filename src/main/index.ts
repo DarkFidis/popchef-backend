@@ -1,5 +1,9 @@
 import "reflect-metadata"
 
-import { run } from "./worker"
+import { log } from './log'
+import { run as runWorker } from './worker'
 
-run().catch(err => console.error(err))
+runWorker().catch((err) => {
+  log.error(err)
+  process.exit(1)
+})
