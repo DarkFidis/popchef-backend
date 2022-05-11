@@ -2,6 +2,10 @@
   "name": "popchef-backend",
   "version": "1.0.0",
   "description": "",
+  "engines": {
+    "node": "18.1.0",
+    "npm": "8.8.0"
+  },
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
