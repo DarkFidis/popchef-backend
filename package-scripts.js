@@ -1,5 +1,5 @@
 const { join, relative } = require('path')
-const { series } = require('nps-utils')
+const { concurrent, series } = require('nps-utils')
 const { engines } = require('./package.json')
 
 const baseDir = relative(process.cwd(), __dirname) || '.'
@@ -54,6 +54,36 @@ module.exports = {
             script: `tsc -w -b ${join(baseDir, 'src', 'main', 'tsconfig.json')}`,
           },
         },
+      },
+    },
+    clean: {
+      all: {
+        description: 'Clean all generated files',
+        script: concurrent.nps('clean', 'clean.gitversion', 'clean.nodeversion'),
+      },
+      coverage: {
+        description: 'Clean all coverage files',
+        script: `rimraf '${join(baseDir, 'dist', 'coverage')}'`,
+      },
+      default: {
+        description: 'Clean generated files',
+        script: concurrent.nps('clean.dist', 'clean.package', 'clean.coverage'),
+      },
+      dist: {
+        description: 'Clean all dist generated files',
+        script: `rimraf '${join(baseDir, 'dist')}/**'`,
+      },
+      gitversion: {
+        description: 'Clean .gitversion generated files',
+        script: `rimraf '${join(baseDir, '.gitversion')}'`,
+      },
+      nodeversion: {
+        description: 'Clean .node-version generated files',
+        script: `rimraf '${join(baseDir, '.node-version')}'`,
+      },
+      package: {
+        description: 'Clean package files',
+        script: `rimraf '${baseDir}/*.tgz' '${join(baseDir, 'package')}/**'`,
       },
     },
     cover: {
