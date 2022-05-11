@@ -1,6 +1,8 @@
+import {LoggerConfig} from "./logger";
+
 export interface Config {
   env: string
-  log: any
+  log: LoggerConfig
   name: string
   version: string
   server: any
