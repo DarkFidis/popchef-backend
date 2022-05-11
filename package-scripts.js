@@ -3,12 +3,15 @@ const { concurrent, series } = require('nps-utils')
 const { engines } = require('./package.json')
 
 const baseDir = relative(process.cwd(), __dirname) || '.'
+const env = process.env.NODE_ENV || 'production'
 const jestOpts = {
   all: '--runInBand=true ',
   e2e: '--runInBand=true ',
   integration: '--runInBand=true ',
   unit: '',
 }
+
+const scriptNamePerEnv = (scriptName) => `nps ${scriptName}.${env}`
 
 module.exports = {
   scripts: {
@@ -159,6 +162,55 @@ module.exports = {
       },
     },
     nps: 'nps',
+    start: {
+      default: {
+        description: 'Start the web application',
+        script: scriptNamePerEnv('start'),
+      },
+      development: {
+        description: 'Start the web application in development mode',
+        script: `NODE_ENV=development ts-node ${join(baseDir, 'src/main/index')}`,
+      },
+      production: {
+        description: 'Start the web application in production mode',
+        script: [
+          'NODE_ENV=production',
+          'node',
+          '-r source-map-support/register',
+          join(baseDir, 'dist/built/src/main/index'),
+        ].join(' '),
+      },
+      watch: {
+        default: {
+          description: 'Start the web application in watch mode',
+          script: scriptNamePerEnv('start.watch'),
+        },
+        development: {
+          description: 'Start the web application in development watch mode',
+          script: [
+            'NODE_ENV=development',
+            'ts-node-dev',
+            '-r source-map-support/register',
+            '--watch',
+            join(baseDir, 'config'),
+            '--respawn',
+            join(baseDir, 'src/main/index'),
+          ].join(' '),
+        },
+        production: {
+          description: 'Start the web application in production watch mode',
+          script: [
+            'NODE_ENV=production',
+            'ts-node-dev',
+            '-r source-map-support/register',
+            '--watch',
+            join(baseDir, 'config'),
+            '--respawn',
+            join(baseDir, 'src/main/index'),
+          ].join(' '),
+        },
+      },
+    },
     test: {
       all: {
         description: 'Run all tests',
