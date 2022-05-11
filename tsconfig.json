@@ -28,7 +28,8 @@
     "strictNullChecks": true,
     "strictPropertyInitialization": true,
     "target": "es2017",
-    "typeRoots": ["src/main/types", "src/test/types", "node_modules/@types"]
+    "typeRoots": ["src/main/types", "src/test/types", "node_modules/@types"],
+    "useUnknownInCatchVariables": false
   },
   "include": ["src/**/*.ts"],
   "exclude": ["dist", "tmp"]
