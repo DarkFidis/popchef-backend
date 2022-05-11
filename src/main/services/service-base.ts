@@ -1,4 +1,5 @@
 import { Logger } from 'winston'
+
 import { Serviceable, ServiceStateable } from '../types/service'
 import { InitBase } from './init-base'
 

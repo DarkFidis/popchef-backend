@@ -1,4 +1,5 @@
 import { Logger } from 'winston'
+
 import { Initializable } from '../types/service'
 
 abstract class InitBase<T> implements Initializable<T> {

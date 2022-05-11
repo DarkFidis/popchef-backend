@@ -3,10 +3,10 @@ import { Request, Response } from 'express'
 import { ServerOptions } from 'https'
 import { when } from 'jest-when'
 import { noop } from 'lodash'
+import { Logger } from 'winston'
 
 import { ServiceBase } from '../../../main/services/service-base'
 import { Optional } from '../../../main/types/basic-types'
-import { Logger } from 'winston'
 import { StaticWebServerable, WebServerConfig } from '../../../main/types/web-server'
 
 const jestExpress = require('jest-express')
@@ -557,10 +557,7 @@ describe('web server unit tests', () => {
               const req = {} as Request
               const res = { setHeader: jest.fn() } as unknown as Response
               handler(req, res)
-              expect(res.setHeader).toHaveBeenCalledWith(
-                'x-powered-by',
-                'web-server@1.0.0',
-              )
+              expect(res.setHeader).toHaveBeenCalledWith('x-powered-by', 'web-server@1.0.0')
               return expressMw
             })
           // When

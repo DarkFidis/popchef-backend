@@ -3,11 +3,11 @@ import { promises as fsPromises } from 'fs'
 import { createServer as createHttpServer, Server as HttpServer } from 'http'
 import { createServer as createHttpsServer, Server as HttpsServer } from 'https'
 import { isNil, omitBy } from 'lodash'
+import { Logger } from 'winston'
 
 import { InternalError } from '../errors/internal-error'
 import { errorMw } from '../middlewares/error'
 import { notFound } from '../middlewares/not-found'
-import { Logger } from 'winston'
 import { RichError } from '../types/middlewares'
 import {
   RegisterApp,
@@ -159,11 +159,7 @@ class WebServer extends ServiceBase<WebServerConfig> implements WebServerable {
     app.disable('x-powered-by')
     if (typeof this.config.poweredBy === 'string' || typeof this.config.poweredBy === 'undefined') {
       const poweredBy =
-        this.config.poweredBy ||
-        [
-          this.config.name,
-          `@${this.config.version}`
-        ].join('')
+        this.config.poweredBy || [this.config.name, `@${this.config.version}`].join('')
       app.use(
         toExpressMw((__, res) => {
           res.setHeader('x-powered-by', poweredBy)

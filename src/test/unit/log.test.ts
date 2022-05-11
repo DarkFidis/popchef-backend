@@ -1,5 +1,5 @@
 import { when } from 'jest-when'
-import { Logger } from "winston";
+import { Logger } from 'winston'
 
 describe('log unit tests', () => {
   let getLogger: jest.Mock
@@ -12,9 +12,9 @@ describe('log unit tests', () => {
   })
   test('should create and initialize log', () => {
     // Given
-    const log = ({
+    const log = {
       init: jest.fn(),
-    } as unknown) as jest.Mocked<Logger>
+    } as unknown as jest.Mocked<Logger>
     when(getLogger).calledWith('popchef-test').mockReturnValue(log)
     // When
     const result = require('../../main/log')

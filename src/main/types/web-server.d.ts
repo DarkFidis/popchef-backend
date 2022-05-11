@@ -2,8 +2,8 @@ import * as express from 'express'
 import { Server as HttpServer } from 'http'
 import { Server as HttpsServer } from 'https'
 import { ServerOptions } from 'https'
-
 import { Logger } from 'winston'
+
 import { Serviceable } from './service'
 
 export interface WebServerConfig {

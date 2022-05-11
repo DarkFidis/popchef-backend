@@ -1,8 +1,8 @@
 import { when } from 'jest-when'
+import { Logger } from 'winston'
 
 import { ServiceBase } from '../../../main/services/service-base'
 import { Serviceable } from '../../../main/types/service'
-import { Logger } from 'winston'
 
 describe('service base unit tests', () => {
   let log: jest.Mocked<Logger>

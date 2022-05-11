@@ -1,4 +1,4 @@
-import {LoggerConfig} from "./logger";
+import { LoggerConfig } from './logger'
 
 export interface Config {
   env: string
