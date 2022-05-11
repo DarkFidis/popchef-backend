@@ -1,5 +1,20 @@
+const { join, relative } = require('path')
+const { engines } = require('./package.json')
+
+const baseDir = relative(process.cwd(), __dirname) || '.'
+
 module.exports = {
   scripts: {
+    beautify: {
+      default: {
+        description: 'List files to be beautified',
+        script: 'prettier -l "src/**/*.{js,ts}"',
+      },
+      fix: {
+        description: 'Beautify source files',
+        script: 'prettier --write "src/**/*.{js,ts}"',
+      },
+    },
     build: {
       default: {
         description: 'Build all',
