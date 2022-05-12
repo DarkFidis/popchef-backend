@@ -63,7 +63,7 @@ describe('web server unit tests', () => {
       expect(WebServer.defaultConfig).toEqual({
         gitVersion: true,
         listen: {
-          port: 8342,
+          port: 4000,
         },
         log: true,
         ping: true,

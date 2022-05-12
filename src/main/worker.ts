@@ -1,6 +1,7 @@
 import { log } from './log'
 import { webServer } from './server'
 import { Workerable } from './types/worker'
+import {pgClient} from "./postgres";
 
 const worker: Workerable = {
   handleSignal: async (name) => {
@@ -21,6 +22,7 @@ const worker: Workerable = {
         void worker.shutdown(0)
       }
     })
+    await pgClient.start()
     await webServer.init()
     await webServer.start()
     log.info(`/!\\ to stop worker : kill -s SIGTERM ${process.pid}`)
@@ -28,6 +30,7 @@ const worker: Workerable = {
   shutdown: async (exitCode = 1) => {
     try {
       await webServer.stop()
+      await pgClient.stop()
       process.exit(exitCode)
     } catch (err) {
       log.error(err)

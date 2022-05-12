@@ -170,7 +170,6 @@ class WebServer extends ServiceBase<WebServerConfig> implements WebServerable {
 
   public registerPingMw(app: express.Application): void {
     if (!this.config.ping) {
-      console.log('No ping !')
       return
     }
     app.get('/ping', (__: express.Request, res: express.Response) => {
