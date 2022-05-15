@@ -10,8 +10,10 @@ describe('router unit tests', () => {
   let urlencodedBodyParser: jest.Mock
   let rawBodyParser: jest.Mock
   let cookieParserFactory: jest.Mock
+  let corsFactory: jest.Mock
   let express: jest.Mocked<typeof jestExpress>
   let cookieParserMw: jest.Mock
+  let corsMw: jest.Mock
   let registerApp: jest.Mocked<RegisterApp>
   let helloWorldMw: jest.Mock
   let toExpressMw: jest.Mock
@@ -39,12 +41,17 @@ describe('router unit tests', () => {
     cookieParserFactory = require('cookie-parser')
     cookieParserMw = jest.fn()
     when(cookieParserFactory).calledWith().mockReturnValue(cookieParserMw)
+    jest.doMock('cors')
+    corsFactory = require('cors')
+    corsMw = jest.fn()
+    when(corsFactory).calledWith({ origin: ['http://localhost:4000']}).mockReturnValue(corsMw)
     jest.doMock('../../main/routes/user.router', () => ({
       userRouter: jest.fn()
     }))
     ;({ userRouter } = require('../../main/routes/user.router'))
     ;({ registerApp } = require('../../main/router'))
     expect(cookieParserFactory).toHaveBeenNthCalledWith(1)
+    expect(corsFactory).toHaveBeenNthCalledWith(1, { origin: ['http://localhost:4000']})
     const expressMock: jest.Mocked<typeof jestExpress> = jest.fn(
       jestExpress as ((...args: unknown[]) => unknown) | undefined,
     )
@@ -66,6 +73,7 @@ describe('router unit tests', () => {
         jsonBodyParser,
         urlencodedBodyParser,
         rawBodyParser,
+        corsMw
       )
       expect(app.use).toHaveBeenNthCalledWith(2, '/api/users', userRouter)
       expect(app.get).toHaveBeenCalledWith('/hello', helloWorldExpressMw)
