@@ -8,6 +8,7 @@
   },
   "main": "dist/built/src/main/index.js",
   "scripts": {
+    "build": "nps build",
     "nps": "nps",
     "test": "nps test"
   },

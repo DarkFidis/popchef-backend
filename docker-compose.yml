@@ -1,0 +1,13 @@
+version: '3.4'
+
+services:
+  popchef:
+    build:
+      args:
+        NODE_VERSION: 18.1.0
+        NPM_VERSION: 8.8.0
+      context: .
+    container_name: popchef-backend
+    ports:
+      - "4000:4000"
+    restart: unless-stopped
