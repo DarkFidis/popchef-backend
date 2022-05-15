@@ -22,7 +22,7 @@ import { ServiceBase } from './service-base'
 class WebServer extends ServiceBase<WebServerConfig> implements WebServerable {
   public static readonly defaultConfig: WebServerConfig = {
     gitVersion: true,
-    listen: { port: 4000 },
+    listen: { port: 4001 },
     log: true,
     ping: true,
     poweredBy: 'Express-template',

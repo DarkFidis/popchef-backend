@@ -13,6 +13,6 @@ RUN npm run build
 ENV NODE_ENV=production
 
 FROM base
-EXPOSE 4000
-HEALTHCHECK CMD curl --fail http://localhost:4000/ping || exit 1
+EXPOSE 4001
+HEALTHCHECK CMD curl --fail http://localhost:4001/ping || exit 1
 CMD ["node", "-r", "source-map-support/register", "dist/built/src/main"]
