@@ -8,9 +8,9 @@ describe('e2e tests', () => {
   beforeAll(() => e2eServer.start())
   afterAll(() => e2eServer.stop())
   describe('hello world', () => {
-    test('should respond to GET /ping', async () => {
+    test('should respond to GET /hello', async () => {
       // When
-      const res: Response = await client('')
+      const res: Response = await client('hello')
       // Then
       expectResponse(res, 200, { hello: 'world' })
     })

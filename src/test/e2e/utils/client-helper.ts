@@ -3,7 +3,7 @@ import got from 'got'
 import { ClientHelper } from '../../types/e2e-utils'
 
 const clientHelper: ClientHelper = {
-  baseUrl: 'http://localhost:8342',
+  baseUrl: 'http://localhost:4000',
   client: got,
   init: () => {
     const { webServer } = require('../../../main/server')

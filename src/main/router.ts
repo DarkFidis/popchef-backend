@@ -8,6 +8,7 @@ import cookieParserFactory from 'cookie-parser'
 import { helloWorldMw } from './middlewares/hello-world'
 import { RegisterApp } from './types/web-server'
 import { toExpressMw } from './utils/helper'
+import {userRouter} from "./routes/user.router";
 
 const jsonBodyParserMw = jsonBodyParserFactory()
 const urlencodedBodyParserMw = urlencodedBodyParserFactory({ extended: false })
@@ -16,5 +17,7 @@ const cookieParserMw = cookieParserFactory()
 
 export const registerApp: RegisterApp = (app) => {
   app.use(cookieParserMw, jsonBodyParserMw, urlencodedBodyParserMw, rawBodyParserMw)
-  app.get('/', toExpressMw(helloWorldMw))
+  app.use('/api/users', userRouter)
+  app.get('/hello', toExpressMw(helloWorldMw))
+
 }
