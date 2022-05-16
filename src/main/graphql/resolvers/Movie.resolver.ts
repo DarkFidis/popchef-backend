@@ -9,10 +9,10 @@ import {MovieInput} from "../schema/Movie.schema";
 @Resolver(Movie)
 export class MovieResolver {
   @Query(() => [Movie])
-  async getAuthors() {
+  async getMovies() {
     const authors = await movieModel.getAll()
     if (!authors.length) {
-      throw new NotFoundError('No authors in database')
+      throw new NotFoundError('No movies in database')
     }
     return authors
   }
@@ -23,7 +23,7 @@ export class MovieResolver {
   ) {
     const movie = await movieModel.getById(id)
     if (!movie) {
-      throw new NotFoundError('Author not found')
+      throw new NotFoundError('Movie not found')
     }
     return movie
   }
@@ -55,7 +55,7 @@ export class MovieResolver {
   ) {
     const movie = await movieModel.getById(id)
     if (!movie) {
-      throw new BadRequestError('The author you try to delete does not exists')
+      throw new BadRequestError('The movie you try to delete does not exists')
     }
     try {
       await movieModel.deleteById(id)
@@ -63,7 +63,7 @@ export class MovieResolver {
       throw new InternalError('Error while deleting movie')
     }
     if (!movie) {
-      throw new BadRequestError('The author you try to delete does not exists')
+      throw new BadRequestError('The movie you try to delete does not exists')
     }
     return movie
   }
