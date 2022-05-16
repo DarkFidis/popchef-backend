@@ -1,0 +1,7 @@
+.git/
+dist/
+node_modules/
+tmp/
+.*.lck
+*.log
+npm-debug.log*
