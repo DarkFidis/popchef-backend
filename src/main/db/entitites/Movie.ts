@@ -12,10 +12,10 @@ export class Movie {
   description: string
 
   @Column()
-  length: number
+  length: string
 
   @Column()
-  releaseYear: number
+  releaseYear: string
 
   @Column()
   imgUrl: string

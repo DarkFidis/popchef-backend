@@ -1,7 +1,8 @@
 import {BaseModel} from "./baseModel";
 import {Movie} from "../entitites/Movie";
+import {MovieModelable} from "../../types/models";
 
-export class MovieModel extends BaseModel {
+export class MovieModel extends BaseModel implements MovieModelable {
   constructor() {
     super(Movie);
   }
