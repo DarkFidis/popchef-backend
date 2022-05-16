@@ -2,6 +2,7 @@ import { log } from './log'
 import { webServer } from './server'
 import { Workerable } from './types/worker'
 import {pgClient} from "./postgres";
+import {seedDatabase} from "./seed/movies";
 
 const worker: Workerable = {
   handleSignal: async (name) => {
@@ -25,6 +26,7 @@ const worker: Workerable = {
     await pgClient.start()
     await webServer.init()
     await webServer.start()
+    await seedDatabase()
     log.info(`/!\\ to stop worker : kill -s SIGTERM ${process.pid}`)
   },
   shutdown: async (exitCode = 1) => {
