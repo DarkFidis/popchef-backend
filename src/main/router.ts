@@ -27,6 +27,7 @@ const registerGqlServer: RegisterApp = async (app) => {
     schema,
     context: ({ req, res }: any) => ({ req, res })
   })
+  await apolloServer.start();
   apolloServer.applyMiddleware({ app })
 }
 

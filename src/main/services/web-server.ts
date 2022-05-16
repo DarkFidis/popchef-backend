@@ -73,11 +73,11 @@ class WebServer extends ServiceBase<WebServerConfig> implements WebServerable {
     return true
   }
 
-  public init(opt?: Partial<WebServerConfig>): void {
+  public async init(opt?: Partial<WebServerConfig>): Promise<void> {
     super.init(opt)
     const app = express()
     this._app = app
-    this.registerMw(app)
+    await this.registerMw(app)
   }
 
   public async run(): Promise<boolean> {
@@ -126,13 +126,13 @@ class WebServer extends ServiceBase<WebServerConfig> implements WebServerable {
     return true
   }
 
-  public registerMw(app: express.Application): void {
+  public async registerMw(app: express.Application): Promise<void> {
     this.disableEtag(app)
     this.setTrustProxy(app)
     this.registerPoweredByMw(app)
     this.registerPingMw(app)
     if (this.registerApp) {
-      this.registerApp(app)
+      await this.registerApp(app)
     }
     app.use(notFound)
     app.use(toExpressErrorMw(errorMw))
