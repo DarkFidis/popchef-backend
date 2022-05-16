@@ -151,6 +151,42 @@ module.exports = {
         },
       },
     },
+    db: {
+      entity: {
+        create: {
+          description: 'Create entity with given name',
+          script: 'npm run typeorm entity:create',
+        }
+      },
+      mig: {
+        create: {
+          description: 'Create DB migration',
+          script: 'npm run typeorm migration:create',
+        },
+        revert: {
+          description: 'Revert given DB migration',
+          script: 'npm run typeorm migration:revert',
+        },
+        run: {
+          description: 'Run given DB migration',
+          script: 'npm run typeorm migration:run',
+        },
+        show: {
+          description: 'Show all migrations and whether they have been run or not',
+          script: 'npm run typeorm migration:show',
+        }
+      },
+      schema: {
+        drop: {
+          description: 'Drop DB schema',
+          script: 'npm run schema.drop',
+        },
+        sync: {
+          description: 'Synchronizes entities with DB schema',
+          script: 'npm run typeorm schema.sync',
+        }
+      }
+    },
     lint: {
       default: {
         description: 'Lint TypeScript sources',
